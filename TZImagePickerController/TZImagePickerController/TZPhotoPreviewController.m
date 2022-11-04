@@ -648,9 +648,9 @@
 }
 
 - (void)showPhotoBytes {
-    [[TZImageManager manager] getPhotosBytesWithArray:@[_models[self.currentIndex]] completion:^(NSString *totalBytes) {
-        self->_originalPhotoLabel.text = [NSString stringWithFormat:@"(%@)",totalBytes];
-    }];
+//    [[TZImageManager manager] getPhotosBytesWithArray:@[_models[self.currentIndex]] completion:^(NSString *totalBytes) {
+//        self->_originalPhotoLabel.text = [NSString stringWithFormat:@"(%@)",totalBytes];
+//    }];
 }
 
 - (NSInteger)currentIndex {

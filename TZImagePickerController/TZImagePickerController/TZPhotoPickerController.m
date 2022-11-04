@@ -920,10 +920,10 @@ static CGFloat itemMargin = 5;
     if ([[TZImagePickerConfig sharedInstance].preferredLanguage isEqualToString:@"vi"] && self.view.tz_width <= 320) {
         return;
     }
-    TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
-    [[TZImageManager manager] getPhotosBytesWithArray:imagePickerVc.selectedModels completion:^(NSString *totalBytes) {
-        self->_originalPhotoLabel.text = [NSString stringWithFormat:@"(%@)",totalBytes];
-    }];
+//    TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
+//    [[TZImageManager manager] getPhotosBytesWithArray:imagePickerVc.selectedModels completion:^(NSString *totalBytes) {
+//        self->_originalPhotoLabel.text = [NSString stringWithFormat:@"(%@)",totalBytes];
+//    }];
 }
 
 - (void)prepareScrollCollectionViewToBottom {
