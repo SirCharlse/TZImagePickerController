@@ -326,7 +326,8 @@ static dispatch_once_t onceToken;
             if (model.type != TZAssetModelMediaTypeVideo) dataLength += imageData.length;
             assetCount ++;
             if (assetCount >= photos.count) {
-                NSString *bytes = [self getBytesFromDataLength:dataLength];
+//                NSString *bytes = [self getBytesFromDataLength:dataLength];
+                NSString *bytes = [NSString stringWithFormat:@"%ld",(long)dataLength];
                 if (completion) completion(bytes);
             }
         }];

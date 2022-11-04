@@ -136,6 +136,16 @@
 }
 
 - (void)selectPhotoButtonClick:(UIButton *)sender {
+    
+    //选择的图片大小不能超过100M，否则不能选择
+    NSData *imgData = UIImageJPEGRepresentation(self.photoSelImage, 1); //1 it represents the quality of the image.
+//    NSLog(@"image-kb:%d kb,image-M:%d M", [imgData length]/1000, ([imgData length]/1000)/1024);
+//    imgData = nil;
+    if ([imgData length] > 104857600) {
+        return;
+    }
+    
+
     if (self.didSelectPhotoBlock) {
         self.didSelectPhotoBlock(sender.isSelected);
     }

@@ -443,12 +443,22 @@ static CGFloat itemMargin = 5;
 }
 
 - (void)originalPhotoButtonClick {
-    _originalPhotoButton.selected = !_originalPhotoButton.isSelected;
-    _isSelectOriginalPhoto = _originalPhotoButton.isSelected;
-    _originalPhotoLabel.hidden = !_originalPhotoButton.isSelected;
-    if (_isSelectOriginalPhoto) {
-        [self getSelectedPhotoBytes];
-    }
+    
+     TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
+    [[TZImageManager manager] getPhotosBytesWithArray:imagePickerVc.selectedModels completion:^(NSString *totalBytes) {
+        //self->_originalPhotoLabel.text = [NSString stringWithFormat:@"(%@)",totalBytes];
+        
+        if ([totalBytes intValue] <= 104857600) {
+            self->_originalPhotoButton.selected = !self->_originalPhotoButton.isSelected;
+            self->_isSelectOriginalPhoto = self->_originalPhotoButton.isSelected;
+            self->_originalPhotoLabel.hidden = !self->_originalPhotoButton.isSelected;
+        }else{
+            TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
+            [imagePickerVc showAlertWithTitle:@"图片文件过大，暂时无法发送"];
+        }
+        
+    }];
+
 }
 
 - (void)doneButtonClick {
